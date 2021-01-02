@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
 
 public class MemberService {
 
