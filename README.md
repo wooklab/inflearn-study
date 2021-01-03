@@ -5,3 +5,7 @@
   - https://inf.run/tTqc
   - 지식 공유자: 김영한
   - 스킬태그: #Back-End #Java #Spring #MVC
+- 스프링 핵심 원리 - 기본편
+  - https://inf.run/m8np
+  - 지식 공유자: 김영한
+  - 스킬태그: #Back-End #Spring #객체지향
