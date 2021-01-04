@@ -1,26 +1,19 @@
 package hello.core.order;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepository;
 
 @Component
 public class OrderServiceImpl implements OrderService {
 
-    // private final MemberRepository memberRepository = new MemoryMemberRepository();
-    // private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
-    // private final DiscountPolicy discountPolicy = new RateDiscountPolicy();  // 추상인터페이스 뿐만아니라 구현클래스에도 의존
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired  // TODO: @Autowired를 붙이지 않아도 자동 주입이 가능하다. 순수 생성자 주입을 권장하는 것 같은데.. 확인필요!
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
