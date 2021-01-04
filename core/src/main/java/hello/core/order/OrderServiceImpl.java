@@ -1,5 +1,8 @@
 package hello.core.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
@@ -7,6 +10,7 @@ import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -15,6 +19,7 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired  // TODO: @Autowired를 붙이지 않아도 자동 주입이 가능하다. 순수 생성자 주입을 권장하는 것 같은데.. 확인필요!
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
