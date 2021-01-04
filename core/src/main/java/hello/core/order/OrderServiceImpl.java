@@ -16,11 +16,38 @@ public class OrderServiceImpl implements OrderService {
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
     // private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     // private final DiscountPolicy discountPolicy = new RateDiscountPolicy();  // 추상인터페이스 뿐만아니라 구현클래스에도 의존
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
 
-    @Autowired  // TODO: @Autowired를 붙이지 않아도 자동 주입이 가능하다. 순수 생성자 주입을 권장하는 것 같은데.. 확인필요!
+    /*private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
+
+    @Autowired  // 생성자가 하나일 경우 생략이 가능
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("OrderServiceImpl.OrderServiceImpl");
+        System.out.println("memberRepository = " + memberRepository + ", discountPolicy = " + discountPolicy);
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }*/
+
+    /*@Autowired private MemberRepository memberRepository;
+    @Autowired private DiscountPolicy discountPolicy;*/
+
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
+    @Autowired
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
