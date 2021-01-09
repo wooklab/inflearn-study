@@ -9,3 +9,7 @@
   - https://inf.run/m8np
   - 지식 공유자: 김영한
   - 스킬태그: #Back-End #Spring #객체지향
+- 실전! 스프링 데이터 JPA
+  - https://inf.run/yabS
+  - 지식 공유자: 김영한
+  - 스킬태그: #Back-End #Java #Spring #SpringBoot #JPA
