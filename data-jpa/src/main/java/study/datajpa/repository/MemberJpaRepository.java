@@ -28,7 +28,7 @@ public class MemberJpaRepository {
         em.remove(member);
     }
 
-    public List<Member> findALL() {
+    public List<Member> findAll() {
         // JPQL(객체를 대상으로 하는 쿼리)
         return em.createQuery("select m from Member m", Member.class)
             .getResultList();   // 반환하는 결과 값이 복수

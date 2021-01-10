@@ -47,7 +47,7 @@ class MemberJpaRepositoryTest {
         assertThat(findMember2).isEqualTo(memeber2);
 
         // 리스트 조회 검증
-        List<Member> all = memberJpaRepository.findALL();
+        List<Member> all = memberJpaRepository.findAll();
         assertThat(all.size()).isEqualTo(2);
 
         // 카운트 검증
