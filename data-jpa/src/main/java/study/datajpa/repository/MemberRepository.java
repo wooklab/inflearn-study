@@ -18,4 +18,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 //    @Query(name = "Member.findByUsername")  // SpringJPA 에서 해당 어노테이션은 생략가능
     List<Member> findByUsername(@Param("username") String username);
 
+
+    // 아래 정적 쿼리를 애플리케이션 로드하는 시점에 파싱을 하여 확인한다.
+    @Query("select m from Member m where m.username = :username and m.age = :age")  // compile 시점에도 오류를 확인할 수 있다.
+    List<Member> findUser(@Param("username") String username, @Param("age") int age);
 }
