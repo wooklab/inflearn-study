@@ -17,12 +17,15 @@ public class JpaMain {
 
         try {
             // 영속
-            Member findMember1 = em.find(Member.class, 101L);   // DB 조회(조회 후 1차 캐시에 저장함)
-            Member findMember2 = em.find(Member.class, 101L);   // 1차 캐시 조회
+            Member member1 = new Member(151L, "A");
+            Member member2 = new Member(161L, "B");
 
-            // 영속 Entitiy 의 동일성을 보장
-            System.out.println("result = " + (findMember1 == findMember2)); // 동일성 비교결과: true
+            em.persist(member1);
+            em.persist(member2);
 
+            System.out.println("====================");
+
+            // 쿼리가 2개 실행됨 (버퍼링가능)
             tx.commit();    // 실제 쿼리가 발생하는 시점
         } catch (Exception e) {
             tx.rollback();
