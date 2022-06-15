@@ -17,14 +17,18 @@ public class JpaMain {
 
         try {
             // 영속
-            Member member = new Member(200L, "member200");
-            em.persist(member);
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAA");
 
-            // 아래와 같이 직접 호출 하거나 commit 시 & JPQL 실행시 자동 실행
-            em.flush(); // db 쿼리가 바로 실행 (1차 캐시를 지우거나 하는 게 아니라 SQL 저장소에 저장된 데이터를 처리한다)
+            // 준영속 (영속성 컨텍스트의 이점을 사용할 수 없음)
+//            em.detach(member);  // 특정 entity detach
+            em.clear();         // 전체 entity 초기화
+//            em.close();   // 영속성 컨텍스트 종료
+
+            Member member2 = em.find(Member.class, 150L);   // 쿼리를 다시 전송
 
             System.out.println("====================");
-            tx.commit();    // 트랜잭션만 처리
+            tx.commit();
         } catch (Exception e) {
             tx.rollback();
         } finally {
