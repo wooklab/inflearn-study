@@ -17,15 +17,14 @@ public class JpaMain {
 
         try {
             // 영속
-            Member member = em.find(Member.class, 150L);
-            member.setName("ZZZZZ");
+            Member member = new Member(200L, "member200");
+            em.persist(member);
 
-//            em.persist(member); // ?? 이렇게 하지 않아도 된다. 컬렉션에 값을 꺼내고 변경하고 다시 집어 넣지 않는 원리와 같다.
+            // 아래와 같이 직접 호출 하거나 commit 시 & JPQL 실행시 자동 실행
+            em.flush(); // db 쿼리가 바로 실행 (1차 캐시를 지우거나 하는 게 아니라 SQL 저장소에 저장된 데이터를 처리한다)
 
             System.out.println("====================");
-
-            // 쿼리가 2개 실행됨 (버퍼링가능)
-            tx.commit();    // 실제 쿼리가 발생하는 시점
+            tx.commit();    // 트랜잭션만 처리
         } catch (Exception e) {
             tx.rollback();
         } finally {
