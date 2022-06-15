@@ -47,4 +47,17 @@ public class MemberJpaRepository {
     public Member find(Long id) {
         return em.find(Member.class, id);
     }
+
+    public List<Member> findByUsernameAndAgeGreaterThan(String username, int age) {
+        return em.createQuery("select m from Member m where m.username = :username and m.age > :age")   // 오타가 발생해도 runtime에 해당 쿼리가 실행되어야 오류를 알수 있다.
+                .setParameter("username", username)
+                .setParameter("age", age)
+                .getResultList();
+    }
+
+    public List<Member> findByUsername(String username) {
+        return em.createNamedQuery("Member.findByUsername", Member.class)
+                .setParameter("username", username)
+                .getResultList();
+    }
 }
