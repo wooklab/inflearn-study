@@ -20,6 +20,9 @@ public class JpaMain {
             Member findMember1 = em.find(Member.class, 101L);   // DB 조회(조회 후 1차 캐시에 저장함)
             Member findMember2 = em.find(Member.class, 101L);   // 1차 캐시 조회
 
+            // 영속 Entitiy 의 동일성을 보장
+            System.out.println("result = " + (findMember1 == findMember2)); // 동일성 비교결과: true
+
             tx.commit();    // 실제 쿼리가 발생하는 시점
         } catch (Exception e) {
             tx.rollback();
