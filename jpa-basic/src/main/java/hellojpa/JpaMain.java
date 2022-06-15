@@ -17,11 +17,10 @@ public class JpaMain {
 
         try {
             // 영속
-            Member member1 = new Member(151L, "A");
-            Member member2 = new Member(161L, "B");
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZZ");
 
-            em.persist(member1);
-            em.persist(member2);
+//            em.persist(member); // ?? 이렇게 하지 않아도 된다. 컬렉션에 값을 꺼내고 변경하고 다시 집어 넣지 않는 원리와 같다.
 
             System.out.println("====================");
 
