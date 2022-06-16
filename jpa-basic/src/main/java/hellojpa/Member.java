@@ -1,5 +1,6 @@
 package hellojpa;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,7 +11,9 @@ public class Member {
 
     @Id
     private Long id;
+//    @Column(unique = true, length = 10) // DDL 생성기능으로 자동 스키마 생성시에만 작동
     private String name;
+    private int age;
 
     // JPA는 내부적으로 리플렉션 사용함으로 기본 생성자 필요(public이나 protected)
     public Member() {
