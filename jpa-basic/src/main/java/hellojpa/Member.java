@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     // columnDefinition = "varchar(255)"
     @Column(name = "name", nullable = false) // DDL 생성기능으로 자동 스키마 생성시에만 작동
@@ -22,11 +22,11 @@ public class Member {
     public Member() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
