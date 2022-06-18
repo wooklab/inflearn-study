@@ -17,7 +17,13 @@ public class Member {
     @Column(name = "name", nullable = false) // DDL 생성기능으로 자동 스키마 생성시에만 작동
     private String username;
 
-    public Member() {
+    protected Member() {
+        // do nothing just for hibernate...
+    }
+
+    public Member(Long id, String username) {
+        this.id = id;
+        this.username = username;
     }
 
     public Long getId() {
