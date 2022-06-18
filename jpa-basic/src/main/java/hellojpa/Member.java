@@ -1,22 +1,29 @@
 package hellojpa;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity // default (name = "Member")// JPA 가 내부적으로 구분하기 위한 이름
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
 
-    // JPA는 내부적으로 리플렉션 사용함으로 기본 생성자 필요
-    public Member() {
+    // columnDefinition = "varchar(255)"
+    @Column(name = "name", nullable = false) // DDL 생성기능으로 자동 스키마 생성시에만 작동
+    private String username;
+
+    protected Member() {
+        // do nothing just for hibernate...
     }
 
-    public Member(Long id, String name) {
+    public Member(Long id, String username) {
         this.id = id;
-        this.name = name;
+        this.username = username;
     }
 
     public Long getId() {
@@ -27,11 +34,11 @@ public class Member {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
