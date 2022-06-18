@@ -24,7 +24,7 @@
             validate        엔티티와 테이블이 정상 매핑되었는지만 확인
             ! 그냥 개발 초기가 아니라면 사용하지 말자
             -->
-            <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- APP 실행 시점에 자동 스키마 생성 -->
+            <property name="hibernate.hbm2ddl.auto" value="none" /> <!-- APP 실행 시점에 자동 스키마 생성 -->
         </properties>
     </persistence-unit>
 </persistence>
