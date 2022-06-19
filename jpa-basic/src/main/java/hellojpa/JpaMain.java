@@ -23,7 +23,7 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            member.changeTeam(team);
             em.persist(member);
 
 //            team.getMembers().add(member);  // 객체지향적으로 넣어주는게 맞음
