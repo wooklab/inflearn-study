@@ -23,13 +23,10 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.changeTeam(team);
             em.persist(member);
 
-//            team.getMembers().add(member);  // 객체지향적으로 넣어주는게 맞음
+            team.addMember(member);
 
-//            em.flush();
-//            em.clear();   // 일부러 flush() 하지 않는다면 같은 트랜잭션 상에서는 JPA 관계가 적용되기 전이다.
 
             Member findMember = em.find(Member.class, member.getId());
             List<Member> members = findMember.getTeam().getMembers();
