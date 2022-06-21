@@ -9,6 +9,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity // default (name = "Member")// JPA 가 내부적으로 구분하기 위한 이름
@@ -33,7 +34,7 @@ public class Member {
 
     @ManyToMany
     @JoinTable(name = "MEMBER_PRODUCT")
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     protected Member() {
         // do nothing just for hibernate...
