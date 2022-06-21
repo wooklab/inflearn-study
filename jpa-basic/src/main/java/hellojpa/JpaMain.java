@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -17,25 +16,19 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
             Member member = new Member();
             member.setUsername("member1");
+
             em.persist(member);
 
-            team.addMember(member);
+            Team team = new Team();
+            team.setName("teamA");
+            //
+            team.getMembers().add(member);  // 애매한 포인트 (insert 후 별도 update 로직 발생)
+            // jpa가 알아서 해주긴 하지만 코드상에서는 일어나는 일을 알 수 없다.
+            // 객체설계의 손해를 보더라도 다대일 양방향으로 구현하자.
 
-
-            Member findMember = em.find(Member.class, member.getId());
-            List<Member> members = findMember.getTeam().getMembers();
-
-            System.out.println("===================");
-            for (Member m : members) {
-                System.out.println("m.username = " + m.getUsername());
-            }
-            System.out.println("===================");
+            em.persist(team);
 
             tx.commit();
         } catch (Exception e) {
