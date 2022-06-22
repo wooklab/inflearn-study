@@ -16,19 +16,19 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = new Member();
-            member.setUsername("member1");
+            Movie movie = new Movie();
+            movie.setDirector("aaaa");
+            movie.setActor("bbbb");
+            movie.setName("바람과 함께 사라지다");
+            movie.setPrice(1_000);
 
-            em.persist(member);
+            em.persist(movie);  // 알아서 테이블을 나눠서 INSERT
 
-            Team team = new Team();
-            team.setName("teamA");
-            //
-            team.getMembers().add(member);  // 애매한 포인트 (insert 후 별도 update 로직 발생)
-            // jpa가 알아서 해주긴 하지만 코드상에서는 일어나는 일을 알 수 없다.
-            // 객체설계의 손해를 보더라도 다대일 양방향으로 구현하자.
+            em.flush();
+            em.clear();
 
-            em.persist(team);
+            Movie findMovie = em.find(Movie.class, movie.getId());  // 알아서 테이블 두개를 JOIN
+            System.out.println("findMovie = " + findMovie);
 
             tx.commit();
         } catch (Exception e) {
