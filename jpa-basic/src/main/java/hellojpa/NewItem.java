@@ -8,7 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)   // 한 테이블로 구성
 @DiscriminatorColumn    // DTYPE이 자동추가 (속성 name을 입력하면 DTYPE이 아닌 다름이름 설정 가능)
 public class NewItem {
 
