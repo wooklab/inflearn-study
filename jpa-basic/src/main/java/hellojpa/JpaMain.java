@@ -27,8 +27,8 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            Movie findMovie = em.find(Movie.class, movie.getId());  // 알아서 테이블 두개를 JOIN
-            System.out.println("findMovie = " + findMovie);
+            NewItem newItem = em.find(NewItem.class, movie.getId()); // 명확하게 찾을떄는 효율적이지만, 그렇지 않을 떈 union all을 사용하게 되어 성능저하)
+            System.out.println("newItem = " + newItem);
 
             tx.commit();
         } catch (Exception e) {
