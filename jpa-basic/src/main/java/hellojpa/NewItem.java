@@ -1,6 +1,5 @@
 package hellojpa;
 
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,7 +8,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)   // 한 테이블로 구성
-@DiscriminatorColumn    // DTYPE이 자동추가 (속성 name을 입력하면 DTYPE이 아닌 다름이름 설정 가능)
+// @DiscriminatorColumn 사용하지 않아도 SINGLE_TABLE 전략에서는 자동생성
 public class NewItem {
 
     @Id
