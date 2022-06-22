@@ -1,13 +1,12 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Delivery {
+public class Delivery extends BasedEntity {
 
     @Id
     @GeneratedValue

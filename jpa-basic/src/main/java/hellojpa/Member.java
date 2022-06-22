@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity // default (name = "Member")// JPA 가 내부적으로 구분하기 위한 이름
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue
