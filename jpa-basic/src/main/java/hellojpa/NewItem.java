@@ -7,9 +7,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)   // 한 테이블로 구성
-// @DiscriminatorColumn 사용하지 않아도 SINGLE_TABLE 전략에서는 자동생성
-public class NewItem {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)   // 한 테이블로 구성
+public abstract class NewItem {
 
     @Id
     @GeneratedValue
