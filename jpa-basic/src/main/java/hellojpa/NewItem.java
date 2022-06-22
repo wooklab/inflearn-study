@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn    // DTYPE이 자동추가
+@DiscriminatorColumn    // DTYPE이 자동추가 (속성 name을 입력하면 DTYPE이 아닌 다름이름 설정 가능)
 public class NewItem {
 
     @Id

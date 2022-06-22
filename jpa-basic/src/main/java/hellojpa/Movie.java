@@ -1,8 +1,10 @@
 package hellojpa;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("M")    // DTYPE 의 값을 정의하려면 별도 이름 입력
 public class Movie extends NewItem {
 
     private String director;
