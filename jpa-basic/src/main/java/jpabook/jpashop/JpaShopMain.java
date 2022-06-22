@@ -1,7 +1,6 @@
 package jpabook.jpashop;
 
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderItem;
+import jpabook.jpashop.domain.ShopBook;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,14 +19,11 @@ public class JpaShopMain {
 
         try {
 
-            Order order = new Order();
-            em.persist(order);
+            ShopBook shopBook = new ShopBook();
+            shopBook.setName("JPA");
+            shopBook.setAuthor("김영한");
 
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-
-            em.persist(orderItem);
-
+            em.persist(shopBook);
 
             tx.commit();
         } catch (Exception e) {
