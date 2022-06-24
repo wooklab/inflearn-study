@@ -26,11 +26,9 @@ public class JpaMain {
             Member refMember = em.getReference(Member.class, member1.getId());
             System.out.println("refMember = " + refMember.getClass());    // Proxy
 
-//            em.detach(refMember);
-//            em.close();
-            em.clear();
-
-            System.out.println("refMember.username = " + refMember.getUsername());
+            System.out.println("isLoaded = " + emf.getPersistenceUnitUtil().isLoaded(refMember));   // proxy 인스턴스 초기화 여부
+            refMember.getUsername();
+            System.out.println("isLoaded = " + emf.getPersistenceUnitUtil().isLoaded(refMember));   // proxy 인스턴스 초기화 여부
 
             tx.commit();
         } catch (Exception e) {
