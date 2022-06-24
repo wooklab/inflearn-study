@@ -23,13 +23,13 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            Member m1 = em.find(Member.class, member1.getId());
-            System.out.println("m1 = " + m1.getClass());    // 영속성 컨텍스트에 저장됨
+            Member refMember = em.getReference(Member.class, member1.getId());
+            System.out.println("refMember = " + refMember.getClass());    // Proxy
 
-            Member reference = em.getReference(Member.class, member1.getId());
-            System.out.println("reference = " + reference.getClass()); // 원본을 가리킴
+            Member findMember = em.find(Member.class, member1.getId());
+            System.out.println("findMember = " + findMember.getClass()); // Member (실제 DB조회) -> Proxy 반환
 
-            System.out.println("a == a: " + (m1 == reference)); // JPA 에서는 한 트랜잭션안에서는 같은 걸 보장해준다.
+            System.out.println("refMember == findMember: " + (refMember == findMember)); // true(JPA는 한 트랜잭션 내에서 같음을 보장한다)
 
             tx.commit();
         } catch (Exception e) {
