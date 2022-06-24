@@ -6,10 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity // default (name = "Member")// JPA 가 내부적으로 구분하기 위한 이름
 public class Member extends BaseEntity {
@@ -26,13 +22,6 @@ public class Member extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)    // 일대다 에서 양방향(읽기전용)을 사용하고 싶은 경우 추가
     private Team team;
-
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
-
-    @OneToMany(mappedBy = "member")
-    private List<MemberProduct> memberProducts = new ArrayList<>();
 
     protected Member() {
         // do nothing just for hibernate...
@@ -60,21 +49,5 @@ public class Member extends BaseEntity {
 
     public void setTeam(Team team) {
         this.team = team;
-    }
-
-    public Locker getLocker() {
-        return locker;
-    }
-
-    public void setLocker(Locker locker) {
-        this.locker = locker;
-    }
-
-    public List<MemberProduct> getMemberProducts() {
-        return memberProducts;
-    }
-
-    public void setMemberProducts(List<MemberProduct> memberProducts) {
-        this.memberProducts = memberProducts;
     }
 }

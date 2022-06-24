@@ -16,13 +16,18 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = em.find(Member.class, 1L);
+            Member member = new Member();
+            member.setUsername("hello");
 
-            printMember(member);
-            printMemberAndTeam(member);
+            em.persist(member);
 
             em.flush();
             em.clear();
+
+            // join 쿼리로 member와 team을 찾음
+            Member findMember = em.find(Member.class, member.getId());
+            System.out.println("findMember.username = " + findMember.getUsername());
+            System.out.println("findMember.id = " + findMember.getId());
 
             tx.commit();
         } catch (Exception e) {
@@ -31,19 +36,5 @@ public class JpaMain {
             em.close();
         }
         emf.close();
-    }
-
-    // Member 만 가져와도 충분(Team 을 같이 가져오면 낭비)
-    private static void printMember(Member member) {
-        System.out.println("member = " + member.getUsername());
-    }
-
-    // Team 도 동시에 가져오면 유리
-    private static void printMemberAndTeam(Member member) {
-        String username = member.getUsername();
-        System.out.println("username = " + username);
-
-        Team team = member.getTeam();
-        System.out.println("team = " + team.getName());
     }
 }
