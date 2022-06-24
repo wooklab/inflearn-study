@@ -26,14 +26,15 @@ public class JpaMain {
             Member refMember = em.getReference(Member.class, member1.getId());
             System.out.println("refMember = " + refMember.getClass());    // Proxy
 
-            Member findMember = em.find(Member.class, member1.getId());
-            System.out.println("findMember = " + findMember.getClass()); // Member (실제 DB조회) -> Proxy 반환
+//            em.detach(refMember);
+            em.close();
 
-            System.out.println("refMember == findMember: " + (refMember == findMember)); // true(JPA는 한 트랜잭션 내에서 같음을 보장한다)
+            System.out.println("refMember.username = " + refMember.getUsername());
 
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
+            e.printStackTrace();
         } finally {
             em.close();
         }
