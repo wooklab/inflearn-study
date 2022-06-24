@@ -27,7 +27,8 @@ public class JpaMain {
             System.out.println("refMember = " + refMember.getClass());    // Proxy
 
 //            em.detach(refMember);
-            em.close();
+//            em.close();
+            em.clear();
 
             System.out.println("refMember.username = " + refMember.getUsername());
 
