@@ -24,8 +24,6 @@ public class JpaMain {
             parent.addChild(child2);
 
             em.persist(parent);
-            em.persist(child1);
-            em.persist(child2);
 
             tx.commit();
         } catch (Exception e) {
