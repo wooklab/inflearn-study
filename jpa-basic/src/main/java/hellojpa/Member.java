@@ -2,6 +2,7 @@ package hellojpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,8 +20,8 @@ public class Member extends BaseEntity {
     @Column(name = "USERNAME") // DDL 생성기능으로 자동 스키마 생성시에만 작동
     private String username;
 
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)    // 일대다 에서 양방향(읽기전용)을 사용하고 싶은 경우 추가
+    @ManyToOne(fetch = FetchType.LAZY)  // FetchType.LAZY 옵션을 사용하면 일단 프록시로 조회
+    @JoinColumn(name = "TEAM_ID")    // 일대다 에서 양방향(읽기전용)을 사용하고 싶은 경우 추가
     private Team team;
 
     protected Member() {

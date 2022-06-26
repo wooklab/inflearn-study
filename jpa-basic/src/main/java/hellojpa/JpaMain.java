@@ -1,7 +1,5 @@
 package hellojpa;
 
-import org.hibernate.Hibernate;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,19 +16,26 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
             Member member1 = new Member();
             member1.setUsername("member1");
+            member1.setTeam(team);
+
             em.persist(member1);
 
             em.flush();
             em.clear();
 
-            Member refMember = em.getReference(Member.class, member1.getId());
-            System.out.println("refMember = " + refMember.getClass());    // Proxy
+            Member m = em.find(Member.class, member1.getId());
 
-            System.out.println("isLoaded = " + emf.getPersistenceUnitUtil().isLoaded(refMember));   // proxy 인스턴스 초기화 여부
-            Hibernate.initialize(refMember);    // 강제 초기화 시키기(JPA 표준에는 존재하지 않음)
-            System.out.println("isLoaded = " + emf.getPersistenceUnitUtil().isLoaded(refMember));   // proxy 인스턴스 초기화 여부
+            System.out.println("m = " + m.getTeam().getClass());    // 프록시로 설정된 값 확인
+
+            System.out.println("==================");
+            m.getTeam().getName();  // 이때 Team을 조회하는 쿼리 발생
+            System.out.println("==================");
 
             tx.commit();
         } catch (Exception e) {
