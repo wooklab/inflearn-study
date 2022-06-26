@@ -24,14 +24,13 @@ public class JpaMain {
             parent.addChild(child2);
 
             em.persist(parent);
-            em.persist(child1);
-            em.persist(child2);
 
             em.flush();
             em.clear();
 
             Parent findParent = em.find(Parent.class, parent.getId());
-            em.remove(findParent);
+            findParent.getChildList().remove(0);
+            // Parent 가 Child 의 생명 주기 까지 담당
 
             tx.commit();
         } catch (Exception e) {
