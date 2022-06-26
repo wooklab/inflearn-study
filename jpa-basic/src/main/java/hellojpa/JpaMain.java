@@ -31,10 +31,10 @@ public class JpaMain {
 
             Member m = em.find(Member.class, member1.getId());
 
-            System.out.println("m = " + m.getTeam().getClass());    // 프록시로 설정된 값 확인
+            System.out.println("m = " + m.getTeam().getClass());    // 실제 객체
 
             System.out.println("==================");
-            m.getTeam().getName();  // 이때 Team을 조회하는 쿼리 발생
+            System.out.println(m.getTeam().getName());
             System.out.println("==================");
 
             tx.commit();
