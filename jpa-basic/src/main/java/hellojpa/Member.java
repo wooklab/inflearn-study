@@ -20,7 +20,7 @@ public class Member extends BaseEntity {
     @Column(name = "USERNAME") // DDL 생성기능으로 자동 스키마 생성시에만 작동
     private String username;
 
-    @ManyToOne(fetch = FetchType.EAGER)  // FetchType.EAGER 즉시로딩 (프록시를 사용하지 않음)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
