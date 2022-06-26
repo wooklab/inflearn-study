@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -20,22 +21,31 @@ public class JpaMain {
             team.setName("teamA");
             em.persist(team);
 
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            em.persist(teamB);
+
             Member member1 = new Member();
             member1.setUsername("member1");
             member1.setTeam(team);
-
             em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername("member2");
+            member2.setTeam(teamB);
+            em.persist(member2);
 
             em.flush();
             em.clear();
 
-            Member m = em.find(Member.class, member1.getId());
+//            Member m = em.find(Member.class, member1.getId());
 
-            System.out.println("m = " + m.getTeam().getClass());    // 실제 객체
-
-            System.out.println("==================");
-            System.out.println(m.getTeam().getName());
-            System.out.println("==================");
+            List<Member> members = em.createQuery("select m from Member m", Member.class)
+                                     .getResultList();
+            // JPQL의 경우 아래와 같이
+            // SQL: select * from Member
+            // SQL: select * from Team TEAM_ID = xxx
+            // N+1 번의 쿼리가 발생
 
             tx.commit();
         } catch (Exception e) {
