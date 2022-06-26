@@ -40,7 +40,7 @@ public class JpaMain {
 
 //            Member m = em.find(Member.class, member1.getId());
 
-            List<Member> members = em.createQuery("select m from Member m", Member.class)
+            List<Member> members = em.createQuery("select m from Member m join fetch m.team ", Member.class)    // LAZY여도 한번에 쿼리
                                      .getResultList();
             // JPQL의 경우 아래와 같이
             // SQL: select * from Member
