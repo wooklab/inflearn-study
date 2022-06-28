@@ -24,12 +24,15 @@ public class JpaMain {
             member.setHomeAddress(address);
             em.persist(member);
 
+            // 값 복사
+            Address copyAddress = new Address(address.getCity(), address.getStreet(), address.getZipcode());
+
             Member member2 = new Member();
             member2.setUsername("member2");
-            member2.setHomeAddress(address);
+            member2.setHomeAddress(copyAddress);
             em.persist(member2);
 
-            member.getHomeAddress().setCity("newCity"); // 첫번째 멤버의 주소만 바꾸고 싶었지만 둘다 바뀐다.
+            member.getHomeAddress().setCity("newCity"); // 첫번째 멤버의 주소만 바뀜
 
             tx.commit();
         } catch (Exception e) {
