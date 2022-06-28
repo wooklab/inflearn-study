@@ -32,7 +32,6 @@ public class JpaMain {
             member2.setHomeAddress(copyAddress);
             em.persist(member2);
 
-            member.getHomeAddress().setCity("newCity"); // 첫번째 멤버의 주소만 바뀜
 
             tx.commit();
         } catch (Exception e) {
