@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OrderColumn;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +34,7 @@ public class Member {
     @Column(name = "FOOD_NAME")
     private Set<String> favoriteFood = new HashSet<>();
 
+    @OrderColumn(name = "address_history_order")
     @ElementCollection
     @CollectionTable(name = "ADDRESS", joinColumns = @JoinColumn(name = "MEMBER_ID"))
     private List<Address> addressHistory = new ArrayList<>();
