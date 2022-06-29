@@ -4,8 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
-import java.util.Set;
 
 public class JpaMain {
 
@@ -41,6 +39,10 @@ public class JpaMain {
             // homeCity -> newCity
             Address oldAddress = findMember.getHomeAddress();
             findMember.setHomeAddress(new Address("newCity", oldAddress.getStreet(), oldAddress.getZipcode()));
+
+            // 치킨 -> 한식
+            findMember.getFavoriteFood().remove("치킨");
+            findMember.getFavoriteFood().add("한식");
 
             tx.commit();
         } catch (Exception e) {
