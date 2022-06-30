@@ -25,9 +25,10 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class);
-            List<Member> resultList = query.getResultList();
-            Member singleResult = query.getSingleResult();  // 결과가 정확히 하나가 나와야 함
+            TypedQuery<Member> query = em.createQuery("select m from Member m where m.id = 10", Member.class);
+            Member result = query.getSingleResult();
+            // Spring Data JPA -> Null 또는 Optional 반환
+            System.out.println("result = " + result);
 
             tx.commit();
         } catch (Exception e) {
