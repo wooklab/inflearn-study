@@ -26,11 +26,14 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            // result 도 영속성 컨텍스트에 관리된다
-            List<Member> result = em.createQuery("select m from Member m", Member.class)
-                                    .getResultList();
-            Member findMember = result.get(0);
-            findMember.setAge(20);
+            // m.team -> return Team
+            List<Team> result = em.createQuery("select m.team from Member m", Team.class)   // 자동 team join (묵시적 join)
+                                  .getResultList();
+
+            // 위와 동일한 결과
+            // 아래처럼 명시적으로 join이 발생됨을 알려주도록 하는 것을 권장
+            List<Team> result2 = em.createQuery("select t from Member m join m.team t", Team.class)   // 명시적 team join
+                                   .getResultList();
 
             tx.commit();
         } catch (Exception e) {
