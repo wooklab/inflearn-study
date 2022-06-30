@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class JpaMain {
 
@@ -21,11 +22,12 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
+            member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query1 = em.createQuery("select m from Member m", Member.class);
-            Query query2 = em.createQuery("select m.username, m.age from Member m");    // 반환 타입이 다음과 같이 복수개 일 때
-            TypedQuery<String> query3 = em.createQuery("select m.username, m.age from Member m", String.class); // String으로 타입쿼리 가능
+            TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class);
+            List<Member> resultList = query.getResultList();
+            Member singleResult = query.getSingleResult();  // 결과가 정확히 하나가 나와야 함
 
             tx.commit();
         } catch (Exception e) {
