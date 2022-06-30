@@ -4,9 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import java.util.List;
 
 public class JpaMain {
 
@@ -25,10 +22,10 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query = em.createQuery("select m from Member m where m.id = 10", Member.class);
-            Member result = query.getSingleResult();
-            // Spring Data JPA -> Null 또는 Optional 반환
-            System.out.println("result = " + result);
+            Member singleResult = em.createQuery("select m from Member m where m.username = :username", Member.class)
+                                    .setParameter("username", "member1")
+                                    .getSingleResult();
+            System.out.println("result = " + singleResult.getUsername());
 
             tx.commit();
         } catch (Exception e) {
