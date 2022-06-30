@@ -26,11 +26,13 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            List<Object[]> resultList = em.createQuery("select distinct m.username, m.age from Member m")
-                                          .getResultList();
-            Object[] result = resultList.get(0);
-            System.out.println("username = " + result[0]);
-            System.out.println("age = " + result[1]);
+            // 패키지 명을 붙인 생성자를 사용하는 것과 비슷
+            List<MemberDTO> result = em.createQuery("select new jpql.MemberDTO(m.username, m.age) from Member m", MemberDTO.class)
+                                       .getResultList();
+
+            MemberDTO memberDTO = result.get(0);
+            System.out.println("memberDTO.username = " + memberDTO.getUsername());
+            System.out.println("memberDTO.age = " + memberDTO.getAge());
 
             tx.commit();
         } catch (Exception e) {
