@@ -26,9 +26,8 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            // 임베디드 타입 프로젝션은 엔티티를 통해서만 프로젝션 할 수 있다
-            List<Address> result = em.createQuery("select o.address from Order o", Address.class)
-                                     .getResultList();
+            List result = em.createQuery("select distinct m.username, m.age from Member m")
+                            .getResultList();
 
             tx.commit();
         } catch (Exception e) {
