@@ -33,8 +33,11 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = "select m.username, 'HELLO', TRUE From Member m where m.type = jpql.MemberType.ADMIN";
+//            String query = "select m.username, 'HELLO', TRUE From Member m where m.type = jpql.MemberType.ADMIN";
+            // enum type 하드 코딩시 패키지명 전체 필요
+            String query = "select m.username, 'HELLO', TRUE From Member m where m.type = :userType";
             List<Object[]> result = em.createQuery(query)
+                                      .setParameter("userType", MemberType.ADMIN)   // setParameter를 통해 간결하게 표현 가능
                                       .getResultList();
 
             for (Object[] objects : result) {
