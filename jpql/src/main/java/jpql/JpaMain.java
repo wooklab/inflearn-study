@@ -33,19 +33,16 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-//            String query = "select m.username, 'HELLO', TRUE From Member m where m.type = jpql.MemberType.ADMIN";
-            // enum type 하드 코딩시 패키지명 전체 필요
-            String query = "select m.username, 'HELLO', TRUE From Member m where m.type = :userType";
-            List<Object[]> result = em.createQuery(query)
-                                      .setParameter("userType", MemberType.ADMIN)   // setParameter를 통해 간결하게 표현 가능
-                                      .getResultList();
-
-            for (Object[] objects : result) {
-                System.out.println("objects[0] = " + objects[0]);
-                System.out.println("objects[1] = " + objects[1]);
-                System.out.println("objects[2] = " + objects[2]);
+            String qeury = "select " +
+                "               case when m.age <= 10 then '학생요금' " +
+                "                    when m.age >= 60 then '경로요금' " +
+                "                    else '일반요금' " +
+                "               end " +
+                "           from Member m";
+            List<String> result = em.createQuery(qeury, String.class).getResultList();
+            for (String s : result) {
+                System.out.println("s = " + s);
             }
-
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
