@@ -23,7 +23,7 @@ public class JpaMain {
             em.persist(team);
 
             Member member = new Member();
-            member.setUsername("member1");
+            member.setUsername("teamA");
             member.setAge(10);
             member.changeTeam(team);
 
@@ -32,8 +32,10 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            List<Member> result = em.createQuery("select m from Member m left outer join m.team t", Member.class)
+            List<Member> result = em.createQuery("select m from Member m, Team t where m.username = t.name", Member.class)
                                     .getResultList();
+
+            System.out.println("result.size() = " + result.size());
 
             tx.commit();
         } catch (Exception e) {
