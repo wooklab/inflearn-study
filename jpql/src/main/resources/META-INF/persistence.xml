@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="hello"> <!-- unit name -->
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>-->
+            <property name="hibernate.dialect" value="dialect.MyH2Dialect"/>
+            <!-- 옵션 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.jdbc.batch_size" value="10"/> <!-- 한번에 배치 저장 -->
+
+            <!--
+            create          기존테이블 삭제 후 다시 생성(DROP + CREATE)
+            create-drop     create와 같으나 종료시점에 테이블 DROP
+            update          변경분만 반영(컬럼 추가는 가능하지만 삭제는 불가)
+            ==============================(여기까지는 운영 DB에는 사용하면 안됨)
+            validate        엔티티와 테이블이 정상 매핑되었는지만 확인
+            ! 그냥 개발 초기가 아니라면 사용하지 말자
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- APP 실행 시점에 자동 스키마 생성 -->
+        </properties>
+    </persistence-unit>
+</persistence>
