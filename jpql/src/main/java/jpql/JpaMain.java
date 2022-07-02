@@ -33,9 +33,11 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String qeury = "select nullif(m.username, '관리자') from Member m";
-            List<String> result = em.createQuery(qeury, String.class).getResultList();
-            for (String s : result) {
+//            String query = "select concat('a', 'b') from Member m";
+//            String query = "select 'a' || 'b' from Member m"; // 이것도 가능하지만 표준은 아님
+            String query = "select size(t.members) from Team t";    // 연관관계 개수
+            List<Integer> result = em.createQuery(query, Integer.class).getResultList();
+            for (Integer s : result) {
                 System.out.println("s = " + s);
             }
             tx.commit();
