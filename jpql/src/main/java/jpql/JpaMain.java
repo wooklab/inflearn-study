@@ -18,26 +18,20 @@ public class JpaMain {
 
         try {
 
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
-
-            Member member = new Member();
-            member.setUsername("관리자");
-            member.setAge(10);
-            member.setType(MemberType.ADMIN);
-            member.changeTeam(team);
-
-            em.persist(member);
+            Member member1 = new Member();
+            member1.setUsername("관리자1");
+            em.persist(member1);
+            Member member2 = new Member();
+            member2.setUsername("관리자2");
+            em.persist(member2);
 
             em.flush();
             em.clear();
 
-//            String query = "select concat('a', 'b') from Member m";
-//            String query = "select 'a' || 'b' from Member m"; // 이것도 가능하지만 표준은 아님
-            String query = "select size(t.members) from Team t";    // 연관관계 개수
-            List<Integer> result = em.createQuery(query, Integer.class).getResultList();
-            for (Integer s : result) {
+            // group_concat 이미 있음, 사용자 정의 함수를 어떻게 사용하는지를 위해 별도 정의
+            String query = "select function('group_concat', m.username) from Member m";
+            List<String> result = em.createQuery(query, String.class).getResultList();
+            for (String s : result) {
                 System.out.println("s = " + s);
             }
             tx.commit();
