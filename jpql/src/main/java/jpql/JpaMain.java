@@ -39,11 +39,11 @@ public class JpaMain {
             List<String> result = em.createQuery(query, String.class).getResultList();*/
             /*String query = "select m.team from Member m";         // 2.단일 값 연관 필드
             List<Team> result = em.createQuery(query, Team.class).getResultList();*/
-            String query = "select t.members from Team t";          // 3.컬렉션 값 연관 필드
-            Collection result = em.createQuery(query, Collection.class).getResultList();
+            String query = "select m.username from Team t join t.members m";          // 3.컬렉션 값 연관 필드(FROM 절에서 명시적 조인사용하여 필드 접근)
+            List<String> result = em.createQuery(query, String.class).getResultList();
 
 
-            for (Object s : result) {
+            for (String s : result) {
                 System.out.println("s = " + s);
             }
             tx.commit();
