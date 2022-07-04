@@ -51,6 +51,9 @@ public class JpaMain {
 
             for (Member member : result) {
                 System.out.println("member = " + member.getUsername() + ", " + member.getTeam().getName());
+                // 회원1, 팀A(SQL 조회)
+                // 회원2, 팀A(1차 캐시 조회)
+                // 회원3, 팀B(SQL 조회)
             }
 
             tx.commit();
