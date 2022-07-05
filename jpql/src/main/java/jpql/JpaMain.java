@@ -46,6 +46,8 @@ public class JpaMain {
 
             String query = "select distinct t from Team t join fetch t.members";
             List<Team> result = em.createQuery(query, Team.class)
+                                  .setFirstResult(0)
+                                  .setMaxResults(1) // paging 사용시 warning 발생 (실제 쿼리에서는 페이징이 없음, 메모리에서 페이징, 위험..!)
                                   .getResultList();
 
             for (Team team : result) {
