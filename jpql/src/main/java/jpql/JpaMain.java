@@ -41,12 +41,18 @@ public class JpaMain {
             member3.setTeam(teamB);
             em.persist(member3);
 
-            em.flush();
-            em.clear();
-
+            // flush 자동 호출
             int resultCount = em.createQuery("update Member m set m.age = 20").executeUpdate();
 
             System.out.println("resultCount = " + resultCount);
+            // DB에만 반영이 되어 나이가 0
+            System.out.println("member1.getAge() = " + member1.getAge());
+            System.out.println("member2.getAge() = " + member2.getAge());
+            System.out.println("member3.getAge() = " + member3.getAge());
+
+            em.clear(); // 다시 DB에서 가져오도록 clear
+            Member findMember = em.find(Member.class, member1.getId());
+            System.out.println("findMember.getAge() = " + findMember.getAge());
 
             tx.commit();
         } catch (Exception e) {
