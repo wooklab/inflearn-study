@@ -18,22 +18,42 @@ public class JpaMain {
 
         try {
 
+            Team teamA = new Team();
+            teamA.setName("팀A");
+            em.persist(teamA);
+
+            Team teamB = new Team();
+            teamB.setName("팀B");
+            em.persist(teamB);
+
             Member member1 = new Member();
-            member1.setUsername("관리자1");
+            member1.setUsername("회원1");
+            member1.setTeam(teamA);
             em.persist(member1);
+
             Member member2 = new Member();
-            member2.setUsername("관리자2");
+            member2.setUsername("회원2");
+            member2.setTeam(teamA);
             em.persist(member2);
 
-            em.flush();
-            em.clear();
+            Member member3 = new Member();
+            member3.setUsername("회원3");
+            member3.setTeam(teamB);
+            em.persist(member3);
 
-            // group_concat 이미 있음, 사용자 정의 함수를 어떻게 사용하는지를 위해 별도 정의
-            String query = "select function('group_concat', m.username) from Member m";
-            List<String> result = em.createQuery(query, String.class).getResultList();
-            for (String s : result) {
-                System.out.println("s = " + s);
-            }
+            // flush 자동 호출
+            int resultCount = em.createQuery("update Member m set m.age = 20").executeUpdate();
+
+            System.out.println("resultCount = " + resultCount);
+            // DB에만 반영이 되어 나이가 0
+            System.out.println("member1.getAge() = " + member1.getAge());
+            System.out.println("member2.getAge() = " + member2.getAge());
+            System.out.println("member3.getAge() = " + member3.getAge());
+
+            em.clear(); // 다시 DB에서 가져오도록 clear
+            Member findMember = em.find(Member.class, member1.getId());
+            System.out.println("findMember.getAge() = " + findMember.getAge());
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
