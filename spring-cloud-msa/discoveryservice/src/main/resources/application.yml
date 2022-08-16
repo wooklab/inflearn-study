@@ -1,0 +1,10 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discoveryservice  # MicroService의 ID
+eureka:
+  client: # Server로 사용하기 위해 client 기능 off
+    register-with-eureka: false
+    fetch-registry: false
