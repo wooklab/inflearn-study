@@ -5,7 +5,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: htpp://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
 spring:
   application:
     name: api-gateway-service
@@ -33,4 +33,9 @@ spring:
           filters:
 #            - AddRequestHeader=second-request, second-request-header2
 #            - AddResponseHeader=second-response, second-response-header2
-            - CustomFilter
+            - name: CustomFilter
+            - name: LoggingFilter # Ordered.HIGHEST_PRECEDENCE 와 Ordered.LOWEST_PRECEDENCE 통해 순서 조절 가능
+              args:
+                baseMessage: Hi, there.
+                preLogger: true
+                postLogger: true
