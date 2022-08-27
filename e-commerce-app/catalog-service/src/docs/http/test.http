@@ -1,0 +1,2 @@
+### get catalogs
+GET 127.0.0.1:8000/catalog-service/catalogs

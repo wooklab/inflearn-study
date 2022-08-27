@@ -1,0 +1,13 @@
+### create user
+POST 127.0.0.1:8000/user-service/users
+Content-Type: application/json
+
+{
+  "email": "test@wooklab.org",
+  "name": "test",
+  "pwd": "test1234"
+}
+
+
+### get user
+GET 127.0.0.1:8000/user-service/users
