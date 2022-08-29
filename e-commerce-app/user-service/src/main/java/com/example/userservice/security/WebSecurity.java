@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
-    private static final String LOCAL_IP_ADDRESS = "172.30.1.255";  // 본인 IP로 사용
+    private static final String LOCAL_IP_ADDRESS = "172.30.1.4";  // 본인 IP로 사용
 
     private final UserService userService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
