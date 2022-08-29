@@ -24,11 +24,11 @@ GET 127.0.0.1:8000/user-service/users
 
 
 
-### login
+### login (별도 login end-point는 존재하지 않음, 스프링 시큐리티에서 제공)
 POST 127.0.0.1:8000/user-service/login
 Content-Type: application/json
 
 {
   "email": "test@google.com",
-  "password": "test12345"
+  "password": "test1234"
 }
