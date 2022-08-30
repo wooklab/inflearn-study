@@ -8,7 +8,6 @@ import com.example.userservice.vo.RequestUser;
 import com.example.userservice.vo.ResponseUser;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class UserController {
 
     private final Environment env;
     private final Greeting greeting;
     private final UserService userService;
+    private final ModelMapper modelMapper;
 
     @GetMapping("/health_check")
     public String status() {
@@ -45,12 +45,9 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user) {
-        ModelMapper mapper = new ModelMapper();
-        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-
-        UserDto userDto = mapper.map(user, UserDto.class);
+        UserDto userDto = modelMapper.map(user, UserDto.class);
         UserDto returnUserDto = userService.createUser(userDto);
-        ResponseUser responseUser = mapper.map(returnUserDto, ResponseUser.class);
+        ResponseUser responseUser = modelMapper.map(returnUserDto, ResponseUser.class);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                              .body(responseUser);
@@ -61,7 +58,7 @@ public class UserController {
         Iterable<UserEntity> users = userService.getUserByAll();
 
         List<ResponseUser> result = new ArrayList<>();
-        users.forEach(v -> result.add(new ModelMapper().map(v, ResponseUser.class)));
+        users.forEach(v -> result.add(modelMapper.map(v, ResponseUser.class)));
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
@@ -70,7 +67,7 @@ public class UserController {
     public ResponseEntity<ResponseUser> getUser(@PathVariable("userId") String userId) {
         UserDto userDto = userService.getUserById(userId);
 
-        ResponseUser returnValue = new ModelMapper().map(userDto, ResponseUser.class);
+        ResponseUser returnValue = modelMapper.map(userDto, ResponseUser.class);
 
         return ResponseEntity.status(HttpStatus.OK)
                              .body(returnValue);
