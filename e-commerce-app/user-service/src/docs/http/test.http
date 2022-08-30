@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ### get user
 GET 127.0.0.1:8000/user-service/users
-
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZDE5OWUxNS01Y2RjLTQwZTctYjExNi0wYzYxMDhiMWZmNGYiLCJleHAiOjE2NjE5NjE2ODR9.IJzeZDlK70JT6k2rWUVndu6rdiOmhEPbntEUA3GO5FwuUfu1dSDP_ZfbDZxkty5iSm7CsgsNWscqeFHP94RWhA
 
 
 ### login (별도 login end-point는 존재하지 않음, 스프링 시큐리티에서 제공)
