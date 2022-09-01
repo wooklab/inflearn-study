@@ -9,3 +9,18 @@ GET http://172.30.1.4:55581/actuator/beans
 ### actuator refresh
 POST http://172.30.1.4:55581/actuator/refresh
 
+### gateway 통해 actuator 호출 - health
+GET 127.0.0.1:8000/actuator/health
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2ZTMzZDNjYy03YTkxLTRmYWYtODBjYi02OTUwNmZmYjdmZDkiLCJleHAiOjE2NjIxMzE3ODF9.MS65u-i_IUbvqPEO-Aea9CaZbker8bZKs5PlJaU0vyvp8t9eQKIzP3y4gqgEmrxTD0lLY0X-Ww89kFPjYqcucA
+
+### gateway 통해 actuator 호출 - health2
+GET 127.0.0.1:8000/user-service/actuator/health
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2ZTMzZDNjYy03YTkxLTRmYWYtODBjYi02OTUwNmZmYjdmZDkiLCJleHAiOjE2NjIxMzE3ODF9.MS65u-i_IUbvqPEO-Aea9CaZbker8bZKs5PlJaU0vyvp8t9eQKIzP3y4gqgEmrxTD0lLY0X-Ww89kFPjYqcucA
+
+### gateway 통해 actuator 호출 - refresh
+POST 127.0.0.1:8000/user-service/actuator/refresh
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2ZTMzZDNjYy03YTkxLTRmYWYtODBjYi02OTUwNmZmYjdmZDkiLCJleHAiOjE2NjIxMzE3ODF9.MS65u-i_IUbvqPEO-Aea9CaZbker8bZKs5PlJaU0vyvp8t9eQKIzP3y4gqgEmrxTD0lLY0X-Ww89kFPjYqcucA
+
+### gateway 통해 actuator 호출 - refresh2
+POST 127.0.0.1:8000/actuator/refresh
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2ZTMzZDNjYy03YTkxLTRmYWYtODBjYi02OTUwNmZmYjdmZDkiLCJleHAiOjE2NjIxMzE3ODF9.MS65u-i_IUbvqPEO-Aea9CaZbker8bZKs5PlJaU0vyvp8t9eQKIzP3y4gqgEmrxTD0lLY0X-Ww89kFPjYqcucA

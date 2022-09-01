@@ -1,6 +1,6 @@
 token:
-  expiration_time: 864 # 하루짜리 토큰
-  secret: value2 # 임의 값
+  expiration_time: 86400000 # 하루짜리 토큰
+  secret: my_token_changed # 임의 값
 
 gateway:
   ip: 172.30.1.4

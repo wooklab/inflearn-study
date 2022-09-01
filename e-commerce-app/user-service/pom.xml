@@ -71,7 +71,7 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
-
+        <!-- for Spring Cloud Config -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
