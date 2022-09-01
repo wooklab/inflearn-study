@@ -1,0 +1,11 @@
+# IP와 PORT는 가변적
+
+### actuator health
+GET http://172.30.1.4:55581/actuator/health
+
+### actuator beans
+GET http://172.30.1.4:55581/actuator/beans
+
+### actuator refresh
+POST http://172.30.1.4:55581/actuator/refresh
+
