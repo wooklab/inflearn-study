@@ -32,6 +32,12 @@ logging:
   level:
     com.example.userservice: DEBUG
 
-token:
-  expiration_time: 86400000 # 하루짜리 토큰
-  secret: user_token # 임의 값
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
+
+#token:
+#  expiration_time: 86400000 # 하루짜리 토큰
+#  secret: user_token # 임의 값
