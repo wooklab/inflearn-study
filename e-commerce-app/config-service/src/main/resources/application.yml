@@ -8,4 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///Users/a1101804/works/personal/github/inflearn-study/e-commerce-app/git-local-repo
+          uri: https://github.com/wooklab/spring-cloud-config-sample
+#          username:   # for private repo
+#          passphrase: # for private repo
+#          uri: file:///Users/a1101804/works/personal/github/inflearn-study/e-commerce-app/git-local-repo
