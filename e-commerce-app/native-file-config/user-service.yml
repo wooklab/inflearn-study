@@ -1,0 +1,13 @@
+token:
+  expiration_time: 86400000 # 하루짜리 토큰
+  secret: user_token_native_application_changed_#2 # 임의 값
+
+gateway:
+  ip: 172.30.1.4
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: '{cipher}83fc9225e99d1601062b53e97a7f1ff409290332d453da0ae3e8d9faf1684ccd'
