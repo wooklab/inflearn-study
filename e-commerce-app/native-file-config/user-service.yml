@@ -1,0 +1,13 @@
+token:
+  expiration_time: 86400000 # 하루짜리 토큰
+  secret: '{cipher}AQCnxjrLeZOliUCEwlHVbxAoa7EvvD/bjmLpnnqHY3lV66PjYwLtUkJSHaTnDeIADMQV3PdN1h2OZcbbg76/CKOznJ8l/P4yuMA/tq1KLgA716Rq489a18P5hngoA9xNFZtFsRq754kp1NSZG2gaVqbYkvIeBZLukyW+XxUTyoRnxZK0FOqhbPasrRnEhC5G0SPi4b4PZ5OQIkD4YPdxZxEhHOVkIg88tqozoJ7HQ6hcfIzXsoHACijdi18X06Xc6gbphBgpL2itm9W9kNM7QCRDrmg+/mx1levdwphIr1jg4N4zHsGA2C7P75R7g+TN63gjNKDZlsgntg8N0Em2GUwXbSORW+heJOFYD/Qwh+TtE8PS8b9wxbOq+S9yX/UpTl3tfO2amGYCkeLLlxrAioYl' # user_token_native_application # 임의 값
+
+gateway:
+  ip: 172.30.1.4
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: '{cipher}AQA+9+ZFA44swt2k5Uq84Jmk6FalLxTOIn9ueENV/JIQFffw0/M1SyFErDLy17ELkpEnhJFB3uYRxWeBCmSOxf3UKMGsGwAsPjgi24Gd4PA3nue5Cysl+vVzRhhnZyLt3c4h7efLKBN+FilZq/k0jV3QzYcZrTV9gXqPJHCGuqMX138oBaI/0AgS2RlCuZcZjGVrJbvZ7jr/fQ5NIs1bCb8aUGPxMp6kW2wbFsvAdcFyEvCEW8JF8klhz8ummg64kXx+b0/4aHiu94Bo94eQU3+W/Pq9L9sc3/MSFZZh8aqO6CIgxqKPvEUnfoJ7Om1WSQaIW+GjCx4VBjgxb+Chgbf+seL+EezAwWNf7snUYhEdnZa1upi4jWTDXbS5kGuwNb0='

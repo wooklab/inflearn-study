@@ -15,7 +15,7 @@ spring:
     config:
       server:
         native:
-          search-locations: file://${user.home}/works/personal/github/inflearn-study/e-commerce-app/native-file-repo
+          search-locations: file://${user.home}/works/personal/github/inflearn-study/e-commerce-app/native-file-config
         git:
           uri: https://github.com/wooklab/spring-cloud-config-sample
 #          username:   # for private repo

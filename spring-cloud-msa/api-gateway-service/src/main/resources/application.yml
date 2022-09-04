@@ -97,5 +97,5 @@ management:
       exposure:
         include: refresh, health, beans, httptrace, busrefresh
 
-token:
-  secret: user_token # user-service 와 동일
+#token:
+#  secret: user_token # user-service 와 동일

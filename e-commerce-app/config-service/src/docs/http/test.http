@@ -1,0 +1,10 @@
+### 대칭키로 암호화 하기
+POST http://127.0.0.1:8888/encrypt
+
+user_token_native_application
+
+
+### 대칭키로 복호화 하기
+POST http://127.0.0.1:8888/decrypt
+
+AQAdaDyX6tV915OGfSc0p6W9HJNZuJG+PVtLdlVd+uvABJe38R/ra7DQQ6bLcGISfQVz4nOmxgVt68n4ueRIpaCsKUJrGVSyHTQsF5RQpWXbQufAYOS7hrDBuQlxwvCTED2QqWnIjTSN93YxoZvFvpcFQcQoRCDgbuyo3KDFdTwyyJLhKJNnlm5f1C6l9y5bvvG9mGQaD4mmJX37d2OyizPhK9uMZ5OxZ5pletQHYyvJ0mnn38Z5G9phoB+FWJ+q1VAJhCWWRZnQDHksFGz14D/vQD9YB/z6x1lh2nu0Uk1BNv9V+7hvzSSGG4pioRVoHB6uGGM3xj7khvRUK3r+JZDFKB9+6bzwIrt5MAWwEcaK5wYYux5T8rVWr4wn66mQGkQ=

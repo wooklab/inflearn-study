@@ -1,0 +1,6 @@
+encrypt:
+#  key: abcdefghijklmnopqrstuvwxyz0123456789
+  key-store:
+    location: file://${user.home}/works/personal/github/inflearn-study/e-commerce-app/keystore/apiEncryptionKey.jks
+    password: test1234
+    alias: apiEncryptionKey
