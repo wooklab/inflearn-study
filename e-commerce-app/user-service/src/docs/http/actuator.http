@@ -31,7 +31,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2ZTMzZDNjYy03YTkxLTRmYWYtO
 
 ### gateway 통해 actuator 호출 - busrefresh
 POST 127.0.0.1:8000/user-service/actuator/busrefresh
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkNTUxZDI5My00NDNkLTRhNDEtOGE5ZS0yOTgwN2RmNTk2MmQiLCJleHAiOjE2NjIyMDkyOTF9.Npiybr47RBNQIBS4CKKZYvcuqu6-Ger2Uu2TehbmBBhlfcgZiforLHnDC9PxiXQUC3vcbp3Faqn8gh7bH729yw
+#Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkNTUxZDI5My00NDNkLTRhNDEtOGE5ZS0yOTgwN2RmNTk2MmQiLCJleHAiOjE2NjIyMDkyOTF9.Npiybr47RBNQIBS4CKKZYvcuqu6-Ger2Uu2TehbmBBhlfcgZiforLHnDC9PxiXQUC3vcbp3Faqn8gh7bH729yw
 
 ### gateway 통해 actuator 호출 - busrefresh
 POST 127.0.0.1:8000/actuator/busrefresh

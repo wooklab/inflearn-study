@@ -11,3 +11,7 @@ spring:
     url: jdbc:h2:mem:testdb
     username: sa
     password: '{cipher}AQA+9+ZFA44swt2k5Uq84Jmk6FalLxTOIn9ueENV/JIQFffw0/M1SyFErDLy17ELkpEnhJFB3uYRxWeBCmSOxf3UKMGsGwAsPjgi24Gd4PA3nue5Cysl+vVzRhhnZyLt3c4h7efLKBN+FilZq/k0jV3QzYcZrTV9gXqPJHCGuqMX138oBaI/0AgS2RlCuZcZjGVrJbvZ7jr/fQ5NIs1bCb8aUGPxMp6kW2wbFsvAdcFyEvCEW8JF8klhz8ummg64kXx+b0/4aHiu94Bo94eQU3+W/Pq9L9sc3/MSFZZh8aqO6CIgxqKPvEUnfoJ7Om1WSQaIW+GjCx4VBjgxb+Chgbf+seL+EezAwWNf7snUYhEdnZa1upi4jWTDXbS5kGuwNb0='
+
+order_service:
+#url: http://127.0.0.1:8000/order-service/%s/orders
+  url: http://ORDER-SERVICE/order-service/%s/orders  # @LoadBalanced, ORDER-SERVICE

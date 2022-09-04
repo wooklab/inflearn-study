@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ### get user
 GET 127.0.0.1:8000/user-service/users
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI3YThkZDdmOS1kMmQ1LTRjODMtOTE1MS01NzkzZWQ1MTU4ZGQiLCJleHAiOjE2NjIyMTY0MDh9.rJFYOxTmCjQFaJMC5wiv7YReiipwokPEkgnLfpZK--tQeNI2Pt4dS_tyZaXA_O0LyPBUGePioRN_PIghugl3mQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI3NGYwZGZjYi02YTlkLTRjMzYtOWVhNC01ZTg5NmU4ZTcyYTkiLCJleHAiOjE2NjIzODY3NzR9.9ksVJ-8FjPZNW88zronunz_d_4FlPvFwTRHNzJ8KW9AlJ5YwlGqrCzvtHO3Mfz3chhi9AaHHpsBwSe2cI-qT4w
 
 
 ### login (별도 login end-point는 존재하지 않음, 스프링 시큐리티에서 제공)
@@ -32,3 +32,8 @@ Content-Type: application/json
   "email": "test@google.com",
   "password": "test1234"
 }
+
+
+### 계정조회
+GET 127.0.0.1:8000/user-service/users/618f315f-938d-45b7-81d9-c4d9fcd60261
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI3NGYwZGZjYi02YTlkLTRjMzYtOWVhNC01ZTg5NmU4ZTcyYTkiLCJleHAiOjE2NjIzODY3NzR9.9ksVJ-8FjPZNW88zronunz_d_4FlPvFwTRHNzJ8KW9AlJ5YwlGqrCzvtHO3Mfz3chhi9AaHHpsBwSe2cI-qT4w
