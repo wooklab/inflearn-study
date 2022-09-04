@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ### get user
 GET 127.0.0.1:8000/user-service/users
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiNTRhMmYzMC0zYjhkLTRiM2MtYTNhMC1hNmVkMzY5Y2RlYTkiLCJleHAiOjE2NjIzODg1ODR9.f09A55e7zXK2MqaiLYTuFXfslZwrVZSGeLvgzJN_gq5sZikFZiB5QgSvXXXkKK_0FEEQ9AuAFBqP9TLek5tjMw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0YjI0YzEyMi1lYTJkLTQzNzEtOWU4My1mYjY1MjVmOWI2NmMiLCJleHAiOjE2NjIzODk3NzJ9.M-e6L2d40SIGBoKwuO35RBMiSmcdYQLgLD3CcCxm0CXrXNooOQ7GEwF3GWBlPF1MYOTidxIJ5seNJvE3aIPMIA
 
 
 ### login (별도 login end-point는 존재하지 않음, 스프링 시큐리티에서 제공)
@@ -35,5 +35,5 @@ Content-Type: application/json
 
 
 ### 계정조회
-GET 127.0.0.1:8000/user-service/users/b54a2f30-3b8d-4b3c-a3a0-a6ed369cdea9
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiNTRhMmYzMC0zYjhkLTRiM2MtYTNhMC1hNmVkMzY5Y2RlYTkiLCJleHAiOjE2NjIzODg1ODR9.f09A55e7zXK2MqaiLYTuFXfslZwrVZSGeLvgzJN_gq5sZikFZiB5QgSvXXXkKK_0FEEQ9AuAFBqP9TLek5tjMw
+GET 127.0.0.1:8000/user-service/users/4b24c122-ea2d-4371-9e83-fb6525f9b66c
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0YjI0YzEyMi1lYTJkLTQzNzEtOWU4My1mYjY1MjVmOWI2NmMiLCJleHAiOjE2NjIzODk3NzJ9.M-e6L2d40SIGBoKwuO35RBMiSmcdYQLgLD3CcCxm0CXrXNooOQ7GEwF3GWBlPF1MYOTidxIJ5seNJvE3aIPMIA
