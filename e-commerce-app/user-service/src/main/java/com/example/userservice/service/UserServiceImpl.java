@@ -85,14 +85,18 @@ public class UserServiceImpl implements UserService {
 //                                                                                   new ParameterizedTypeReference<List<ResponseOrder>>() {
 //                                                                                   });
 //        List<ResponseOrder> orders = ordersResponse.getBody();
+
         /* Using as feign client */
         /* Feign exception handling */
-        List<ResponseOrder> orders = null;
-        try {
-            orders = orderServiceClient.getOrders(userId);
-        } catch (FeignException fe) {
-            log.error(fe.getMessage());
-        }
+//        List<ResponseOrder> orders = null;
+//        try {
+//            orders = orderServiceClient.getOrders(userId);
+//        } catch (FeignException fe) {
+//            log.error(fe.getMessage());
+//        }
+
+        /* ErrorDecoder */
+        List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
         userDto.setOrders(orders);
 
         return userDto;

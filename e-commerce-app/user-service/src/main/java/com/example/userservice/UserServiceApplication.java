@@ -1,5 +1,6 @@
 package com.example.userservice;
 
+import com.example.userservice.error.FeignErrorDecoder;
 import feign.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +25,6 @@ public class UserServiceApplication {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
     @LoadBalanced   // 실제 URL 대신 spring cloud service 로 인식
     public RestTemplate getRestTemplate() {
@@ -35,4 +35,9 @@ public class UserServiceApplication {
     public Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }
+
+//    @Bean
+//    public FeignErrorDecoder feignErrorDecoder() {
+//        return new FeignErrorDecoder();
+//    }
 }
