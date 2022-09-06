@@ -1,0 +1,53 @@
+### Connector 등록
+POST http://localhost:8083/connectors
+Content-Type: application/json
+
+{
+  "name": "my-source-connect",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:mysql://localhost:3306/mydb",
+    "connection.user": "root",
+    "connection.password": "test1357",
+    "mode": "incrementing",
+    "table.whitelist": "users",
+    "topic.prefix": "my_topic_",
+    "task.max": 1
+  }
+}
+
+
+### Connector 확인
+GET http://localhost:8083/connectors
+
+### Connector 상세정보
+GET http://localhost:8083/connectors/my-source-connect
+### Connector 상세정보(sink)
+GET http://localhost:8083/connectors/my-sink-connect
+
+
+
+
+
+# my-sink-connect
+# JdbcSinkConnector
+# "auto.create": "true" => topic과 동일한 이름으로 테이블 생성
+### Sink Connector 등록
+POST http://localhost:8083/connectors
+Content-Type: application/json
+
+{
+  "name": "my-sink-connect",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "connection.url": "jdbc:mysql://localhost:3306/mydb",
+    "connection.user": "root",
+    "connection.password": "test1357",
+    "auto.create": "true",
+    "auto.evolve": "true",
+    "delete.enabled": "false",
+    "topic.prefix": "my_topic_",
+    "task.max": 1,
+    "topics": "my_topic_users"
+  }
+}
