@@ -20,3 +20,11 @@
 
 # 7. 컨슈머 실행
 ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic quickstart-events --from-beginning
+
+# kafka connect download
+curl -O http://packages.confluent.io/archive/6.1/confluent-community-6.1.0.tar.gz
+# connector 실행
+./bin/connect-distributed ./etc/kafka/connect-distributed.properties
+
+# JDBC connector down
+https://docs.confluent.io/5.5.1/connect/kafka-connect-jdbc/index.html
