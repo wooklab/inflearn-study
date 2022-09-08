@@ -2,6 +2,7 @@ package com.example.catalogservice.messagequeue;
 
 import com.example.catalogservice.jpa.CatalogEntity;
 import com.example.catalogservice.jpa.CatalogRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class KafkaConsumer {
         try {
             map = objectMapper.readValue(kafkaMessage, new TypeReference<>() {
             });
-        } catch (Exception e) {
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
