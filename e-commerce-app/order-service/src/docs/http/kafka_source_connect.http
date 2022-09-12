@@ -24,6 +24,10 @@ GET http://localhost:8083/connectors
 GET http://localhost:8083/connectors/my-source-connect
 ### Connector 상세정보(sink)
 GET http://localhost:8083/connectors/my-sink-connect
+### Connector 상세정보(order-sink)
+GET http://localhost:8083/connectors/my-order-sink-connect
+### Connector (order-sink) 상태
+GET http://localhost:8083/connectors/my-order-sink-connect/status
 
 
 
@@ -37,7 +41,7 @@ POST http://localhost:8083/connectors
 Content-Type: application/json
 
 {
-  "name": "my-sink-connect",
+  "name": "my-order-sink-connect",
   "config": {
     "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
     "connection.url": "jdbc:mysql://localhost:3306/mydb",
@@ -46,8 +50,7 @@ Content-Type: application/json
     "auto.create": "true",
     "auto.evolve": "true",
     "delete.enabled": "false",
-    "topic.prefix": "my_topic_",
     "task.max": 1,
-    "topics": "my_topic_users"
+    "topics": "orders"
   }
 }
