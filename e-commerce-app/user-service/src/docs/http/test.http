@@ -35,5 +35,5 @@ Content-Type: application/json
 
 
 ### 계정조회
-GET 127.0.0.1:8000/user-service/users/694544aa-6ce9-433d-aa25-8b22b2f2d637
+GET 127.0.0.1:8000/user-service/users/e89f1583-3602-4cd7-a6c9-073d72276228
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2OTQ1NDRhYS02Y2U5LTQzM2QtYWEyNS04YjIyYjJmMmQ2MzciLCJleHAiOjE2NjMwNjI0ODd9.GeN1rJJwA36QZmyAs628txObfyCHExSCgAkzzwF7IMQ3xPl5RWEclL4RXCobVbXgwjTQV8aabtdXCIx3uG7Fqg
