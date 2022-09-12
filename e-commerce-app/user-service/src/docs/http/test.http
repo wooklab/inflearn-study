@@ -35,5 +35,5 @@ Content-Type: application/json
 
 
 ### 계정조회
-GET 127.0.0.1:8000/user-service/users/95150f51-2425-4458-8f75-ef4bc21b5577
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NTE1MGY1MS0yNDI1LTQ0NTgtOGY3NS1lZjRiYzIxYjU1NzciLCJleHAiOjE2NjMwNTQ3NjV9.DSLERmv238lacCjqpZWPteccrnbPrLFCorNquz5nhIjuVX30Dvjns1fyJDBl53woMyFp9Pnsckf04uvnUlezzQ
+GET 127.0.0.1:8000/user-service/users/f1bbbb31-6f8f-4989-b8fa-5542501dc992
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmMWJiYmIzMS02ZjhmLTQ5ODktYjhmYS01NTQyNTAxZGM5OTIiLCJleHAiOjE2NjMwNzExNjR9.fxDwgvarUdjO4eqnNrMJh2zP3f4x9Fq3vBmeoOO2Nw1TRzkuMq_mYb3c3vIn4eoRTOc6Nq7DHMe3KFUnDypDFg
