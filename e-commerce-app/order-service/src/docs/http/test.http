@@ -1,12 +1,12 @@
 ### create order "7473463c-b758-446e-9b3e-f6085246a697" <-- 동적
-POST 127.0.0.1:8000/order-service/b54a2f30-3b8d-4b3c-a3a0-a6ed369cdea9/orders
+POST 127.0.0.1:8000/order-service/95150f51-2425-4458-8f75-ef4bc21b5577/orders
 Content-Type: application/json
 
 {
-  "productId": "CATALOG-013",
-  "qty": 13,
-  "unitPrice": 3000
+  "productId": "CATALOG-007",
+  "qty": 777,
+  "unitPrice": 7200
 }
 
 ### get orders
-GET 127.0.0.1:8000/order-service/ac80df7b-b897-44d4-8c18-05d221ea707a/orders
+GET 127.0.0.1:8000/order-service/95150f51-2425-4458-8f75-ef4bc21b5577/orders
