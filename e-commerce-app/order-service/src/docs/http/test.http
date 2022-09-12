@@ -3,9 +3,9 @@ POST 127.0.0.1:8000/order-service/b54a2f30-3b8d-4b3c-a3a0-a6ed369cdea9/orders
 Content-Type: application/json
 
 {
-  "productId": "CATALOG-013",
-  "qty": 13,
-  "unitPrice": 3000
+  "productId": "CATALOG-001",
+  "qty": 10,
+  "unitPrice": 1500
 }
 
 ### get orders
