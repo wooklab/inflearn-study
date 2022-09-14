@@ -95,7 +95,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, httptrace, busrefresh
+        include: refresh, health, beans, httptrace, busrefresh, info, metrics, prometheus
 
 #token:
 #  secret: user_token # user-service 와 동일
