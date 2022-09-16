@@ -6,6 +6,7 @@ import com.example.userservice.service.UserService;
 import com.example.userservice.vo.Greeting;
 import com.example.userservice.vo.RequestUser;
 import com.example.userservice.vo.ResponseUser;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
@@ -31,6 +32,7 @@ public class UserController {
     private final UserService userService;
     private final ModelMapper modelMapper;
 
+    @Timed(value = "users.status", longTask = true)
     @GetMapping("/health_check")
     public String status() {
         return "It's Working in User Service"
@@ -40,6 +42,7 @@ public class UserController {
             + ", token expiration time=" + env.getProperty("token.expiration_time");
     }
 
+    @Timed(value = "users.welcome", longTask = true)
     @GetMapping("/welcome")
     public String welcome() {
 //        return env.getProperty("greeting.message");

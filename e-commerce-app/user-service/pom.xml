@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>user-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>user-service</name>
     <description>user-service</description>
     <properties>
@@ -115,7 +115,11 @@
             <artifactId>brave</artifactId>
             <version>5.13.7</version>
         </dependency>
-
+        <!-- monitoring -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
         <!-- H2 DB -->
         <dependency>
             <groupId>com.h2database</groupId>

@@ -1,8 +1,12 @@
 # IP와 PORT는 가변적
 
+### welcome
+GET 127.0.0.1:8000/user-service/welcome
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmM2MjBmZS04ZDMwLTRiZjktODJkNC1hZGQ0ZDllNTY4ZTIiLCJleHAiOjE2NjMyNTMwNzJ9.CH35I71lyt2FMcnqiGxehIXlz0s7vZM3CxIRwySq1zDcH2frsdd6rlVAajCT4qmKfz9BpkTtSl-JEnH1i4XgkA
+
 ### healthcheck
 GET 127.0.0.1:8000/user-service/health_check
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI3YThkZDdmOS1kMmQ1LTRjODMtOTE1MS01NzkzZWQ1MTU4ZGQiLCJleHAiOjE2NjIyMTY0MDh9.rJFYOxTmCjQFaJMC5wiv7YReiipwokPEkgnLfpZK--tQeNI2Pt4dS_tyZaXA_O0LyPBUGePioRN_PIghugl3mQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmM2MjBmZS04ZDMwLTRiZjktODJkNC1hZGQ0ZDllNTY4ZTIiLCJleHAiOjE2NjMyNTMwNzJ9.CH35I71lyt2FMcnqiGxehIXlz0s7vZM3CxIRwySq1zDcH2frsdd6rlVAajCT4qmKfz9BpkTtSl-JEnH1i4XgkA
 
 ### actuator health
 GET http://172.30.1.4:55581/actuator/health
@@ -36,3 +40,12 @@ POST 127.0.0.1:8000/user-service/actuator/busrefresh
 ### gateway 통해 actuator 호출 - busrefresh
 POST 127.0.0.1:8000/actuator/busrefresh
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkNTUxZDI5My00NDNkLTRhNDEtOGE5ZS0yOTgwN2RmNTk2MmQiLCJleHAiOjE2NjIyMDkyOTF9.Npiybr47RBNQIBS4CKKZYvcuqu6-Ger2Uu2TehbmBBhlfcgZiforLHnDC9PxiXQUC3vcbp3Faqn8gh7bH729yw
+
+
+### metrics
+GET 127.0.0.1:8000/user-service/actuator/metrics
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmM2MjBmZS04ZDMwLTRiZjktODJkNC1hZGQ0ZDllNTY4ZTIiLCJleHAiOjE2NjMyNTMwNzJ9.CH35I71lyt2FMcnqiGxehIXlz0s7vZM3CxIRwySq1zDcH2frsdd6rlVAajCT4qmKfz9BpkTtSl-JEnH1i4XgkA
+
+### prometheus
+GET 127.0.0.1:8000/user-service/actuator/prometheus
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmM2MjBmZS04ZDMwLTRiZjktODJkNC1hZGQ0ZDllNTY4ZTIiLCJleHAiOjE2NjMyNTMwNzJ9.CH35I71lyt2FMcnqiGxehIXlz0s7vZM3CxIRwySq1zDcH2frsdd6rlVAajCT4qmKfz9BpkTtSl-JEnH1i4XgkA
