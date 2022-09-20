@@ -90,3 +90,15 @@ $ docker run -d -p 9090:9090 \
 $ docker run -d -p 3000:3000 \
              --network ecommerce-network \
             --name grafana grafana/grafana
+
+
+
+# docker micro service 실행
+$ docker run -d --network ecommerce-network \
+             --name user-service \
+             -e "spring.cloud.config.uri=http://config-service:8888" \
+             -e "spring.rabbitmq.host=rabbitmq" \
+             -e "spring.zipkin.base-url=http://zipkin:9411" \
+             -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" \
+             -e "logging.file=/api-logs/users-ws.log" \
+             inwook9/user-service:1.0
