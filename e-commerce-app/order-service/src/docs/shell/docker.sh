@@ -71,3 +71,7 @@ $> grant all privileges on *.* to 'root'@'%' identified by 'test1357';
 $> flush privileges;
 $> exit
 $ mysql -h127.0.0.1 -uroot -p # 이제 가능
+
+
+# kafka docker-compose 실행
+docker-compose -f docker-compose-single-broker.yml up -d
