@@ -81,3 +81,12 @@ $ docker-compose -f docker-compose-single-broker.yml up -d
 $ docker run -d -p 9411:9411 \
              --network ecommerce-network \
              --name zipkin openzipkin/zipkin
+
+# 모너티러이 다운 & 수행
+$ docker run -d -p 9090:9090 \
+             --network ecommerce-network \
+             --name prometheus \
+             -v /path/to/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+$ docker run -d -p 3000:3000 \
+             --network ecommerce-network \
+            --name grafana grafana/grafana
