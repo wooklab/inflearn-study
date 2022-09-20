@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: discoveryservice  # MicroService의 ID
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      name:
 eureka:
   client: # Server로 사용하기 위해 client 기능 off
     register-with-eureka: false

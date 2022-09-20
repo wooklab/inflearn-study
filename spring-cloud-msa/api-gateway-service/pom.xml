@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>api-gateway-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>api-gateway-service</name>
+    <artifactId>apigateway-service</artifactId>
+    <version>1.0</version>
+    <name>apigateway-service</name>
     <description>api-gateway-service</description>
     <properties>
         <java.version>11</java.version>
