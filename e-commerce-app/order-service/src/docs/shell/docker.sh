@@ -110,3 +110,9 @@ $ docker run -d --network ecommerce-network \
              -e "spring.datasource.url=jdbc:mariadb://mariadb:3306/mydb" \
              -e "logging.file=/api-logs/orders-ws.log" \
              inwook9/order-service:1.0
+
+$ docker run -d --network ecommerce-network \
+             --name catalog-service \
+             -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" \
+             -e "logging.file=/api-log/catalogs-ws.log" \
+             inwook9/catalog-service:1.0
