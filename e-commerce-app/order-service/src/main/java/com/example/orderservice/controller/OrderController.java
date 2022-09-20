@@ -55,11 +55,11 @@ public class OrderController {
         /* kafka */
 //        orderDto.setOrderId(UUID.randomUUID().toString());
 //        orderDto.setTotalPrice(orderDetails.getQty() * orderDetails.getUnitPrice());
-//
+
 //        /* send this order to the kafka */
-//        kafkaProducer.send("example-catalog-topic", orderDto);
+        kafkaProducer.send("example-catalog-topic", orderDto);
 //        orderProducer.send("orders", orderDto);
-//
+
 //        ResponseOrder responseOrder = modelMapper.map(orderDto, ResponseOrder.class);
 
         log.info("After added orders data");
@@ -75,12 +75,12 @@ public class OrderController {
         List<ResponseOrder> result = new ArrayList<>();
         orders.forEach(v -> result.add(modelMapper.map(v, ResponseOrder.class)));
 
-        try {
-            Thread.sleep(1_000);
-            throw new Exception("장애 발생");
-        } catch (InterruptedException ie) {
-            log.error(ie.getMessage());
-        }
+//        try {
+//            Thread.sleep(1_000);
+//            throw new Exception("장애 발생");
+//        } catch (InterruptedException ie) {
+//            log.error(ie.getMessage());
+//        }
 
         log.info("Add retrieved orders data");
 

@@ -102,3 +102,11 @@ $ docker run -d --network ecommerce-network \
              -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" \
              -e "logging.file=/api-logs/users-ws.log" \
              inwook9/user-service:1.0
+
+$ docker run -d --network ecommerce-network \
+             --name order-service \
+             -e "spring.zipkin.base-url=http://zipkin:9411" \
+             -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka" \
+             -e "spring.datasource.url=jdbc:mariadb://mariadb:3306/mydb" \
+             -e "logging.file=/api-logs/orders-ws.log" \
+             inwook9/order-service:1.0
