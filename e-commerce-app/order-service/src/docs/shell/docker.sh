@@ -25,7 +25,7 @@ $ docker run -d --name rabbitmq --network ecommerce-network \
              -p 15672:15672 -p 5672:5672 -p 5671:5671 -p 4369:4369 \
              -e RABBITMQ_DEFAULT_USER=guest \
              -e RABBITMQ_DEFAULT_PASS=guest \
-             rabbitmq:managem
+             rabbitmq:management
 
 
 
@@ -34,10 +34,16 @@ $ docker run -d --name rabbitmq --network ecommerce-network \
 $ mvn clean compile package -DskipTests=true
 # docker 파일 빌드 및 허브에 업로드하기
 $ docker build --tag inwook9/config-service:1.0 .
-
+# docker image 업로드하기
+$ docker push inwook9/config-service:1.0
 
 # docker 에서 config-service 실행하기
 $ docker run -d -p 8888:8888 --network ecommerce-network \
              -e "spring.rabbitmq.host=rabbitmq" \
              -e "spring.profiles.active=default" \
              --name config-service inwook9/config-service:1.0
+
+# docker 에서 discovery-service 실행하기
+$ docker run -d -p 8761:8761 --network ecommerce-network \
+             -e "spring.cloud.config.uri=http://config-service:8888" \
+             --name discovery-service inwook9/discovery-service:1.0
