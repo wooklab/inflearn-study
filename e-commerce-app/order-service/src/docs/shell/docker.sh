@@ -32,8 +32,10 @@ $ docker run -d --name rabbitmq --network ecommerce-network \
 
 # docker 이미지 만들기
 $ mvn clean compile package -DskipTests=true
-# docker 파일 빌드 및 허브에 업로드하기
+# docker 파일 빌드
 $ docker build --tag inwook9/config-service:1.0 .
+$ docker build --tag inwook9/discovery-service:1.0 .
+$ docker build --tag inwook9/apigateway-service:1.0 .
 # docker image 업로드하기
 $ docker push inwook9/config-service:1.0
 
@@ -47,3 +49,25 @@ $ docker run -d -p 8888:8888 --network ecommerce-network \
 $ docker run -d -p 8761:8761 --network ecommerce-network \
              -e "spring.cloud.config.uri=http://config-service:8888" \
              --name discovery-service inwook9/discovery-service:1.0
+
+# docker 에서 apigateway-service 실행하기
+$ docker run -d -p 8000:8000 --network ecommerce-network \
+             -e "spring.cloud.config.uri=http://config-service:8888" \
+             -e "spring.rabbitmq.host=rabbitmq" \
+             -e "eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/" \
+             --name apigateway-service inwook9/apigateway-service:1.0
+
+
+
+# docker 에서 mariadb 이미지 만들기 (m1 mac 기준, 테이블 저장 경로: /opt/homebrew/var/mysql)
+$ docker build -t inwook9/my-mariadb:1.0 .
+$ docker run -d -p 3306:3306 --network ecommerce-network \
+             --name mariadb inwook9/my-mariadb:1.0
+# mariadb 접속 후 설정
+$ docker exec -it mariadb /bin/bash
+$ mysql -hlocalhost -uroot -p # 127.0.0.1 사용못함
+$> use mydb;
+$> grant all privileges on *.* to 'root'@'%' identified by 'test1357';
+$> flush privileges;
+$> exit
+$ mysql -h127.0.0.1 -uroot -p # 이제 가능
