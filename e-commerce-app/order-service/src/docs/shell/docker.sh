@@ -73,5 +73,11 @@ $> exit
 $ mysql -h127.0.0.1 -uroot -p # 이제 가능
 
 
-# kafka docker-compose 실행
-docker-compose -f docker-compose-single-broker.yml up -d
+# kafka docker-compose 실행 (아래 수행 전 docker-compose-single-broker.yml 파일 참조)
+$ docker-compose -f docker-compose-single-broker.yml up -d
+
+
+# zipkin 다운 & 수행
+$ docker run -d -p 9411:9411 \
+             --network ecommerce-network \
+             --name zipkin openzipkin/zipkin
